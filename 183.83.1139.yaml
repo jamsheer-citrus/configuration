@@ -1,3 +1,5 @@
-name: noyal
-description: testtt
-attributes: {gdfgd: nb}
+---
+  name: "noyal"
+  description: "testtt"
+  attributes: 
+    gdfgd: "nb"
