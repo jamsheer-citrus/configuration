@@ -1,0 +1,15 @@
+"{\n\t\"signUp\": {\n\t\t\"notificationSettings\": {\n\t\t\t\"override\": \"true\"\
+  ,\n\t\t\t\"toMail\": \"to@mail.com/default\",\n\t\t\t\"fromMail\": \"from@mail.com\"\
+  \n\t\t},\n\t\t\"notificationStyle\": {\n\t\t\t\"override\": \"true\",\n\t\t\t\"\
+  name\": \"mail\"\n\n\t\t},\n\t\t\"templateInfo\": {\n\t\t\t\"override\": \"true\"\
+  ,\n\t\t\t\"templateId\": \"300\"\n\t\t}\n\t},\n\t\"promote\": {\n\t\t\"notificationType\"\
+  : {\n\t\t\t\"override\": \"true\",\n\t\t\t\"name\": \"pushNotification\"\n\n\t\t\
+  },\n\t\t\"templateInfo\": {\n\t\t\t\"override\": \"true\",\n\t\t\t\"templateId\"\
+  : \"200\"\n\n\t\t}\n\t},\n\t\"achievement\": {\n\t\t\"notificationType\": {\n\t\t\
+  \t\"override\": \"false\",\n\t\t\t\"name\": \"websocket\"\n\n\t\t},\n\t\t\"templateInfo\"\
+  : {\n\t\t\t\"override\": \"true\",\n\t\t\t\"templateId\": \"200\"\n\n\t\t}\n\t},\n\
+  \t\"subscription\": {\n\t\t\"notificationType\": {\n\t\t\t\"override\": \"false\"\
+  ,\n\t\t\t\"name\": \"digest\"\n\n\t\t},\n\t\t\"settings\": {\n\t\t\t\"Schedule\"\
+  : \"10min\",\n\t\t\t\"fromMail\": \"from@mail.com\"\n\t\t},\n\t\t\"templateInfo\"\
+  : {\n\t\t\t\"override\": \"true\",\n\t\t\t\"templateId\": \"200\"\n\n\t\t}\n\t}\n\
+  }"
