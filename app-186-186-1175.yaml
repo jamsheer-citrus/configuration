@@ -1,0 +1,14 @@
+signUp:
+  notificationSettings: {override: 'true', toMail: to@mail.com/default, fromMail: from@mail.com}
+  notificationStyle: {override: 'true', name: mail}
+  templateInfo: {override: 'true', templateId: '300'}
+promote:
+  notificationType: {override: 'true', name: pushNotification}
+  templateInfo: {override: 'true', templateId: '200'}
+achievement:
+  notificationType: {override: 'false', name: websocket}
+  templateInfo: {override: 'true', templateId: '200'}
+subscription:
+  notificationType: {override: 'false', name: digest}
+  settings: {Schedule: 10min, fromMail: from@mail.com}
+  templateInfo: {override: 'true', templateId: '200'}
