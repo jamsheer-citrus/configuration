@@ -1,0 +1,10 @@
+results:
+  id: 1229
+  entityName: applicationSettings
+  entityType: applicationSettings
+  description: description
+  attributes: {file: attributes}
+  createdBy: user
+  modifiedBy: user
+  accountId: 183
+  organizationId: 183
