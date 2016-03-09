@@ -8,3 +8,4 @@ pointcipation:
 watchtower:
   notificationType: {override: 'false', name: digest}
   settings: {schedule: 10min, fromMail: from@mail.com}
+  s
