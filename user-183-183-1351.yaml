@@ -1,10 +1,1 @@
-register:
-  settings: {override: 'true', toMail: to@mail.com/default, fromMail: from@mail.com}
-  notificationType: {override: 'true', name: mail}
-altert:
-  notificationType: {override: 'true', name: pushNotification}
-pointcipation:
-  notificationType: {override: 'false', name: websocket}
-watchtower:
-  notificationType: {override: 'false', name: digest}
-  settings: {schedule: 10min, fromMail: from@mail.com}
+{ssssssssssssssssssssssssss: ddddddddddddddddd}
