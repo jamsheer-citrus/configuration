@@ -1,0 +1,4 @@
+settingsDetails:
+  notificationStyleId: '1000'
+  type: sms
+  attributes: {gateWayName: test@netspective.com, fromNo: test@netspective.com}
