@@ -1,0 +1,1 @@
+Hello ${user}, you have a notification !
