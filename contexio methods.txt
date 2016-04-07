@@ -1,0 +1,76 @@
+public static String saveRelationship(String accountId,
+			String organizationId, String operatedBy,
+			RestTemplate restTemplate, String data) {
+
+		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
+		ReadConfiguration read = new ReadConfiguration();
+		final String serviceId = read.getServiceId();
+		headers.add(Constants.OPERATED_BY, operatedBy);
+		headers.add(Constants.SERVICE_ID, serviceId);
+		headers.add(Constants.ORGANIZATION_ID, organizationId);
+		headers.add(Constants.CONTENT_TYPE, "application/json");
+
+		restTemplate.getMessageConverters().add(
+				new MappingJackson2HttpMessageConverter());
+
+		HttpEntity<String> request = new HttpEntity<String>(data, headers);
+
+		String URL = PersistenceResourceURI.URI_RELATION;
+		URL = URL.replace("{accountId}", accountId);
+
+		ResponseEntity<String> value = restTemplate.exchange(URL,
+				HttpMethod.POST, request, String.class);
+
+		return value.getBody();
+
+	}
+
+
+	public static void processRelationship(String accountId,
+			String organizationId, String operatedBy,
+			RestTemplate restTemplate, String projectId, String environmentId,
+			String groupId, String resourceId) {
+
+		JSONObject data = new JSONObject();
+
+		try {
+			data.put("relationType", "resourceResource");
+			data.put("entity2", resourceId);
+			data.put("relationTypeId", "default");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		if (projectId != null) {
+			try {
+				data.put("entity1", projectId);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			saveRelationship(accountId, organizationId, operatedBy,
+					restTemplate, data.toString());
+		}
+		if (environmentId != null) {
+			try {
+				data.put("entity1", environmentId);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			saveRelationship(accountId, organizationId, operatedBy,
+					restTemplate, data.toString());
+		}
+		if (groupId != null) {
+			try {
+				data.put("entity1", groupId);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			saveRelationship(accountId, organizationId, operatedBy,
+					restTemplate, data.toString());
+		}
+
+	}
