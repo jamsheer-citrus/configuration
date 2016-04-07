@@ -1,0 +1,4 @@
+Hello ${user},<br><br>
+Evernote Announces INR pricing for India .<br>
+We’re very excited to offer local payment option for Visa and MasterCard credit card holders in India.<br><br>
+Admin
