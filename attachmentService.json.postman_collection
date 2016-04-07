@@ -1,0 +1,79 @@
+{
+	"owner": 0,
+	"lastUpdatedBy": "253201",
+	"lastRevision": 135077995,
+	"team": null,
+	"id": "6810ffc4-b11b-3d2c-df3e-3eec635bee15",
+	"name": "attachmentService",
+	"description": null,
+	"order": [
+		"fd49de4b-5697-bd93-d3f2-fb78a699e5f3",
+		"903a2ec4-aac1-c4b9-c3b7-319ec4f0ed5c",
+		"accb8b83-1c39-4381-49f2-ff045b156553"
+	],
+	"hasRequests": true,
+	"requests": [
+		{
+			"id": "903a2ec4-aac1-c4b9-c3b7-319ec4f0ed5c",
+			"headers": "ServiceId: 45\nOrganizationId: 63\nOperatedBy: admin\n",
+			"url": "http://192.168.1.27:1237/api/accounts/61/attachment/file/download/555.jpeg.json?repositoryId=cmis&scopeId=chemistry&path=ems/test",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459937885324,
+			"name": "download",
+			"description": "",
+			"collectionId": "6810ffc4-b11b-3d2c-df3e-3eec635bee15"
+		},
+		{
+			"folder": null,
+			"id": "accb8b83-1c39-4381-49f2-ff045b156553",
+			"name": "delete",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"descriptionFormat": null,
+			"description": "",
+			"headers": "ServiceId: 45\nOrganizationId: 63\nOperatedBy: admin\n",
+			"method": "DELETE",
+			"pathVariables": {},
+			"url": "http://localhost:8080/attachmentService/accounts/61/attachment/file/555.jpeg.json?repositoryId=cmis&scopeId=chemistry&path=ems/test",
+			"preRequestScript": "",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionId": "6810ffc4-b11b-3d2c-df3e-3eec635bee15"
+		},
+		{
+			"id": "fd49de4b-5697-bd93-d3f2-fb78a699e5f3",
+			"headers": "ServiceId: 45\nOrganizationId: 63\nOperatedBy: arun\n",
+			"url": "http://192.168.1.37:1237/api/accounts/61/attachment/file/upload.json?repositoryId=cmis&scopeId=chemistry&path=ems/test&attachmentIds=[551y511.jpeg]",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "file",
+					"value": {
+						"0": {}
+					},
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459938566724,
+			"name": "upload",
+			"description": "",
+			"collectionId": "6810ffc4-b11b-3d2c-df3e-3eec635bee15"
+		}
+	]
+}
