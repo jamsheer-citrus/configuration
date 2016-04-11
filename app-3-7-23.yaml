@@ -1,0 +1,4 @@
+notificationStyleId: '1003'
+type: mail
+override: 'true'
+attributes: {schedule: 2minutes}
