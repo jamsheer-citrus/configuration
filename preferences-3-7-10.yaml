@@ -1,0 +1,3 @@
+preferenceDetails:
+- {eventTypeId: '2', notificationStyleId: '1001', deliverMode: default}
+- {eventTypeId: '9', notificationStyleId: '1001', deliverMode: stop}
