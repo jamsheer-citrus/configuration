@@ -1,5 +1,0 @@
-settingsDetails:
-  notificationStyleId: '1001'
-  type: email
-  override: 'true'
-  attributes: {deliverMode: test123sssssssssssssssssssss, subject: test}

@@ -1,4 +1,0 @@
-notificationStyleId: '1003'
-type: emailDigest
-override: 'true'
-attributes: {deliverMode: default, schedule: 1m}

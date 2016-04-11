@@ -1,4 +1,0 @@
-preferenceDetails:
-- {eventTypeId: '1600', notificationStyleId: '1001', deliverMode: default, title: Hello,
-  signatiure: Thank you ..!!}
-- {eventTypeId: '1466', notificationStyleId: '1001', deliverMode: stop}
