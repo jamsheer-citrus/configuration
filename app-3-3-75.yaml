@@ -1,4 +1,4 @@
 notificationStyleId: '1001'
 type: mail
-override: ''
-attributes: {deliverMode: '', subject: ''}
+override: 'true'
+attributes: {deliverMode: default, subject: An invitation to you !}
