@@ -1,0 +1,4 @@
+preferenceDetails:
+- {eventTypeId: '9', notificationStyleId: '1003', deliverMode: default, schedule: 2minutes,
+  saluation: Hello, signature: admin}
+- {eventTypeId: '1466', notificationStyleId: '1001', deliverMode: stop}
