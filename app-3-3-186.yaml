@@ -1,0 +1,3 @@
+fromMail: 1@cithrusinformatics.com
+outBoundStyleId: '1001'
+digestDetails: {type: content, subject: '*ddd*', body: '*ddd*'}
