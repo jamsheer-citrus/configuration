@@ -1,0 +1,5 @@
+outBoundStyleId: '1003'
+type: emailDigest
+override: 'true'
+attributes: {subject: An invitation to you !, salutation: Hello, signature: Admin,
+  schedule: 2minutes, from: bhagyalakshmi.kk@citrusinformatics.com}

@@ -1,0 +1,4 @@
+outBoundStyleId: '1003'
+type: emailDigest
+override: 'true'
+attributes: {subject: An invitation to you !, schedule: 2minutes}
