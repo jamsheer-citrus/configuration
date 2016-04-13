@@ -1,0 +1,3 @@
+preferenceDetails:
+- {eventTypeId: '9', outBoundStyleId: '1001', schedule: 2minutes, deliverMode: ''}
+- {eventTypeId: '1466', notificationStyleId: '1001', deliverMode: stop}
