@@ -1,0 +1,5 @@
+outBoundStyleId: '1001'
+type: mail
+fromEmail: aq
+override: 'true'
+attributes: {deliverMode: default, subject: An invitation to you !}
