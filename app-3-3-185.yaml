@@ -1,0 +1,3 @@
+fromMail: 1@citrusinformatics.com
+outBoundStyleId: '1001'
+digestDetails: {type: content, subject: '*ddd*', body: '*ddd*'}
