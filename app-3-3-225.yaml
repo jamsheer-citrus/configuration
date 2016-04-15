@@ -1,0 +1,5 @@
+outBoundStyleId: '1001'
+outBoundStyleName: mail
+fromMail: t1qqq1111
+recipientType: sdgfs
+outBoundStyleAttributes: {deliverMode: default, subject: An invitation to you !}
