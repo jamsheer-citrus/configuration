@@ -2,3 +2,5 @@ outBoundStyleId: '1003'
 fromMail: bhagyalakshmi.kk@citrusinformatics.com
 eventTypeId: '43'
 outBoundStyleAttributes: {subject: zz}
+recipientType: 'target '
+recipientDetails: {value: '217', key: targetId}
