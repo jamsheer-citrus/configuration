@@ -1,0 +1,6 @@
+outBoundStyleId: '1001'
+recipientType: target
+recipientDetails: {key: targetId, value: '217'}
+fromMail: bhagya@gmail.com
+eventTypeId: '2'
+outBoundStyleAttributes: {deliverMode: default, subject: fi}
