@@ -1,0 +1,3 @@
+outBoundStyleId: '1001'
+outBoundStyleAttributes: {deliverMode: default, subject: Test with salutation and sig,
+  salutation: 'HEllo ..,', signature: Admin}
