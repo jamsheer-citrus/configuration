@@ -2,7 +2,7 @@ outBoundStyleId: '1003'
 recipient: bhagyalakshmi.kk@citrusinformatics.com
 recipientType: target
 recipientDetails: {key: targetId, value: '217'}
-digestDetails: {digestType: simple}
+digestDetails: {digestType: content, body: hello, subject: hi}
 inBoundMail: bhagyalakshmi.kk@citrusinformatics.com
 eventTypeId: '50'
-outBoundStyleAttributes: {subject: zz, schedule: 2minutes}
+outBoundStyleAttributes: {subject: hai hello, schedule: 2minutes}
