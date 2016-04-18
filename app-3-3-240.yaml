@@ -1,6 +1,6 @@
 outBoundStyleId: '1003'
-fromMail: bhagyalakshmi.kk@citrusinformatics.com
-eventTypeId: '43'
-outBoundStyleAttributes: {subject: zz}
-recipientType: 'target '
-recipientDetails: {value: '217', key: targetId}
+recipientType: target
+recipientDetails: {key: targetId, value: '217'}
+inBoundMail: bhagyalakshmi.kk@citrusinformatics.com
+eventTypeId: '50'
+outBoundStyleAttributes: {subject: zz, schedule: 2minutes}
