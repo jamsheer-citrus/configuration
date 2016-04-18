@@ -4,5 +4,5 @@ recipientType: target
 recipientDetails: {key: targetId, value: '217'}
 digestDetails: {digestType: content, body: hello, subject: hi}
 inBoundMail: bhagyalakshmi.kk@citrusinformatics.com
-eventTypeId: '50'
+eventTypeId: '146'
 outBoundStyleAttributes: {subject: hai hello, schedule: 2minutes}
