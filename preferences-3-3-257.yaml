@@ -1,0 +1,3 @@
+preferenceDetails:
+- {eventTypeId: '50', notificationStyleId: '1003', schedule: 2minutes}
+- {eventTypeId: '43', notificationStyleId: '1001', deliverMode: default}
