@@ -1,0 +1,9 @@
+outBoundStyleName: mail
+outBoundStyleId: '1001'
+recipientType: zzz
+recipient: yyy
+recipientDetails: xxx
+inBoundMail: ccxcd@dfd.com
+eventTypeId: '359'
+eventTypeName: www
+outBoundStyleAttributes: {deliverMode: 'true', subject: newsubject}
