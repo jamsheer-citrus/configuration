@@ -1,5 +1,5 @@
-recipientDetails: {value: '275', key: targetId}
-eventTypeId: '274'
-recipientType: target
+recipientDetails: {key: targetId, value: '275'}
 outBoundStyleId: '1002'
-inBoundMail: bhagyalakshmi.kk@citrusinformatics.com
+recipientType: target
+eventTypeId: '274'
+inBoundMail: neethu@citrusinformatics.com
