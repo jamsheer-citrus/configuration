@@ -3,3 +3,4 @@ outBoundStyleId: '1001'
 recipientType: target
 eventTypeId: '396'
 inBoundMail: bhagyalakshmikk2010@gmail.com
+outBoundStyleAttributes: {deliverMode: 'true'}
