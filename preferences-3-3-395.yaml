@@ -1,0 +1,4 @@
+email: aa
+preferenceDetails:
+- {eventTypeId: '1600', notificationStyleId: '1001', deliverMode: Default, schedule: 1minute}
+- {eventTypeId: '1466', notificationStyleId: '1001', deliverMode: stop, schedule: 2minutes}
