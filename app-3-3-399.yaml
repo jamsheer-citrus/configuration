@@ -1,0 +1,8 @@
+outBoundStyleName: mail
+outBoundStyleId: '1001'
+recipient: ''
+recipientDetails: {key: select, value: ''}
+inBoundMail: ''
+eventTypeId: '50'
+eventTypeName: ''
+outBoundStyleAttributes: {deliverMode: '', subject: ''}

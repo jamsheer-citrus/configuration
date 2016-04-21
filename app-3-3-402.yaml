@@ -1,0 +1,7 @@
+outBoundStyleId: '1000'
+recipient: ''
+recipientDetails: {key: targetId, value: '12'}
+inBoundMail: dfas@sfd.com
+eventTypeId: '400'
+eventTypeName: ''
+outBoundStyleAttributes: {sourceNumber: '5678'}
