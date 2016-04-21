@@ -1,0 +1,4 @@
+email: ''
+cellNumber: ''
+preferenceDetails:
+- {eventTypeId: '', notificationStyleId: '', deliverMode: ''}
