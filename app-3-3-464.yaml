@@ -1,6 +1,6 @@
-outBoundStyleId: '1001'
+outBoundStyleId: '1000'
 recipientType: target
 recipientDetails: {key: targetId, value: '275'}
-inBoundMail: ddd@citrusinformatics.com
+inBoundMail: sujith@citrusinformatics.com
 eventTypeId: '461'
-outBoundStyleAttributes: {deliverMode: 'true', subject: Invitation}
+outBoundStyleAttributes: {sourceNumber: '+919846716175'}
