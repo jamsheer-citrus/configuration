@@ -1,0 +1,6 @@
+outBoundStyleId: '1001'
+recipientType: target
+recipientDetails: {key: targetId, value: '275'}
+inBoundMail: ddd@citrusinformatics.com
+eventTypeId: '461'
+outBoundStyleAttributes: {deliverMode: 'true', subject: Invitation}
