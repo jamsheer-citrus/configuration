@@ -1,0 +1,4 @@
+outBoundStyleId: '1001'
+outBoundStyleName: mail
+inBoundMail: t1rirr
+outBoundStyleAttributes: {deliverMode: default, subject: An invitation to you !}
