@@ -1,7 +1,7 @@
-outBoundStyleId: '1000'
-recipientType: target
 recipientDetails: {key: targetId, value: '522'}
-inBoundMail: lisapaul9895@gmail.com
+outBoundStyleAttributes: {sound: ''}
+outBoundStyleId: '1004'
+recipientType: target
 eventTypeId: '521'
+inBoundMail: lisapaul9895@gmail.com
 eventTypeName: ''
-outBoundStyleAttributes: {sourceNumber: '+919846716175'}
