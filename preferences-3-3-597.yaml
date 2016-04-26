@@ -1,4 +1,5 @@
-email: jamsheer@citrusinformatics.com
+email: jamsher@citrusinformatics.com
+cellNumber: '+919846716175'
 preferenceDetails:
-- {eventTypeId: '583', notificationStyleId: '1003', schedule: 2minutes}
-- {eventTypeId: '1466', notificationStyleId: '1001', deliverMode: stop}
+- {eventTypeId: '583'}
+- {eventTypeId: '577'}
