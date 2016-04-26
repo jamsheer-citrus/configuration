@@ -1,7 +1,4 @@
-outBoundStyleId: '1000'
-recipientType: target
-recipientDetails: {key: targetId, value: '598'}
-inBoundMail: justin@citrusinformatics.com
-eventTypeId: '599'
-eventTypeName: ''
-outBoundStyleAttributes: {sourceNumber: ' 919562201376'}
+outBoundStyleId: '1001'
+outBoundStyleName: mail
+inBoundMail: AAAAAAAAAAAAAAAAAAAAAAAAAAAxxxxxxxxxxxxxxxxxxxx
+outBoundStyleAttributes: {deliverMode: default, subject: An invitation to you !}
