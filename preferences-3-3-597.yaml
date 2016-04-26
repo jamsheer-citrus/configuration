@@ -1,0 +1,4 @@
+email: jamsheer@citrusinformatics.com
+preferenceDetails:
+- {eventTypeId: '583', notificationStyleId: '1003', schedule: 2minutes}
+- {eventTypeId: '1466', notificationStyleId: '1001', deliverMode: stop}
