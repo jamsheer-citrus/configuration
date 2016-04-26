@@ -1,4 +1,5 @@
 email: razak@citrusinformatics.com
+cellNumber: '+919497682929'
 preferenceDetails:
 - {eventTypeId: '583', notificationStyleId: '1003', schedule: 2minutes}
-- {eventTypeId: '1466', notificationStyleId: '1001', deliverMode: stop}
+- {eventTypeId: '577'}
