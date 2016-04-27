@@ -1,7 +1,7 @@
-outBoundStyleId: '1001'
-recipientType: target
-recipientDetails: {key: targetId, value: '618'}
-inBoundMail: meera@citrusinformatics.com
-eventTypeId: '617'
 outBoundStyleAttributes: {deliverMode: 'true', subject: Test subject, salutation: Hi,
   signature: Admin}
+recipientDetails: {value: '618', key: targetId}
+eventTypeId: '617'
+recipientType: target
+outBoundStyleId: '1001'
+inBoundMail: bhagyalakshmi.kk@citrusinformatics.com
