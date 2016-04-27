@@ -3,5 +3,5 @@ outBoundStyleAttributes: {deliverMode: 'true', subject: Test subject, salutation
 recipientDetails: {value: '618', key: targetId}
 eventTypeId: '617'
 recipientType: target
-outBoundStyleId: '1001'
+outBoundStyleId: '1003'
 inBoundMail: bhagyalakshmi.kk@citrusinformatics.com
