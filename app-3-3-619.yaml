@@ -1,5 +1,5 @@
 recipientDetails: {key: targetId, value: '618'}
-outBoundStyleAttributes: {deliverMode: 'true'}
+outBoundStyleAttributes: {deliverMode: 'false'}
 outBoundStyleId: '1002'
 recipientType: target
 eventTypeId: '617'
