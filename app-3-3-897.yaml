@@ -1,0 +1,4 @@
+outBoundStyleId: '1001'
+recipientType: target
+inBoundMail: no0@gmail.com
+outBoundStyleAttributes: {deliverMode: hai, subject: 'true'}
