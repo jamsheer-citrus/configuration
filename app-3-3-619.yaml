@@ -3,4 +3,4 @@ outBoundStyleId: '1003'
 recipientType: target
 eventTypeId: '617'
 inBoundMail: bhagyalakshmi.kk@citrusinformatics.com
-outBoundStyleAttributes: {schedule: Mon-10 AM, subject: test}
+outBoundStyleAttributes: {schedule: 'Mon-10:30:00 AM', subject: test}
