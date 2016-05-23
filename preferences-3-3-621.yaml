@@ -1,3 +1,4 @@
+email: abcd
 preferenceDetails:
-- {outBoundStyleId: '1003', eventTypeId: '617'}
+- {outBoundStyleId: '1003', eventTypeId: '5454'}
 - {outBoundStyleId: '1001', eventTypeId: '1466', deliverMode: 'true'}
