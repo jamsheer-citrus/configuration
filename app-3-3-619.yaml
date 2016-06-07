@@ -1,6 +1,6 @@
 recipientDetails: {key: targetId, value: '618'}
-outBoundStyleId: '1003'
+outBoundStyleId: '1000'
 recipientType: target
 eventTypeId: '617'
+outBoundStyleAttributes: {sourceNumber: '+919562201376'}
 inBoundMail: bhagyalakshmi.kk@citrusinformatics.com
-outBoundStyleAttributes: {schedule: 'daily-10:30:00 AM', subject: test}
