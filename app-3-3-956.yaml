@@ -1,0 +1,5 @@
+outBoundStyleId: '1001'
+recipientType: target
+recipient: ''
+recipientDetails: {key: targetId, value: '955'}
+outBoundStyleAttributes: {deliverMode: 'true', subject: test}
