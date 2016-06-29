@@ -1,0 +1,4 @@
+email: noyal.thomas@citrusinformatics.com
+preferenceDetails:
+- {eventTypeId: '966', outBoundStyleId: '1003', schedule: 'Wed-04:15:00 PM'}
+- {eventTypeId: '1466', outBoundStyleId: '1001'}
