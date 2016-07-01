@@ -2,4 +2,4 @@ outBoundStyleId: '1003'
 recipientType: target
 recipientDetails: {key: targetId, value: '970'}
 outBoundStyleAttributes:
-- {schedule: every5m, subject: 'haidear:-every5minute'}
+- {schedule: every1h, subject: 'haidear:-every1hours'}
