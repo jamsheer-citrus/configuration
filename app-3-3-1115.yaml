@@ -1,0 +1,5 @@
+outBoundStyleId: '1003'
+recipientType: target
+recipientDetails: {key: targetId, value: '001'}
+outBoundStyleAttributes:
+- {schedule: every2m, subject: hai you have one message}
