@@ -1,4 +1,4 @@
 outBoundStyleId: '1005'
 outBoundStyleAttributes:
-- {deliverMode: '', schedule: '', startTime: '07/05/2016-10:13:00 AM', repeat: 2times,
-  endTime: '', duration: 1h}
+- {deliverMode: '', schedule: '', startTime: '07/05/2016-10:19:00 AM', repeat: 5times,
+  endTime: '', duration: 5m}
