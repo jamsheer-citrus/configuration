@@ -1,4 +1,5 @@
 outBoundStyleId: '1005'
+inBoundMail: 'no'
 outBoundStyleAttributes:
 - {deliverMode: '', schedule: '', startTime: '07/05/2016-4:15:00 PM', repeat: 9times,
   endTime: '', duration: 5m}
