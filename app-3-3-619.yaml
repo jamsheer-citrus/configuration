@@ -2,3 +2,5 @@ recipientDetails: {key: targetId, value: '618'}
 outBoundStyleId: '1001'
 recipientType: target
 inBoundMail: bhagyalakshmi.kk@citrusinformatics.com
+outBoundStyleAttributes:
+- {deliverMode: 'true'}
