@@ -1,0 +1,6 @@
+outBoundStyleId: '1003'
+recipientType: target
+inBoundMail: root@nosql.prd.nyc2.netspective.io
+recipientDetails: {key: targetId, value: '1175'}
+outBoundStyleAttributes:
+- {schedule: 'everyday-5:00 PM', subject: hai you have one message, GMT: ' 05:30'}
