@@ -1,0 +1,5 @@
+outBoundStyleId: '1003'
+recipientType: participant
+recipientDetails: {key: participantId, value: '1241'}
+outBoundStyleAttributes:
+- {deliverMode: 'true', schedule: every5m, subject: hai you have one message}
