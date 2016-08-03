@@ -1,0 +1,5 @@
+outBoundStyleId: '1003'
+recipientType: participant
+recipientDetails: {key: uniqueId, value: ab}
+outBoundStyleAttributes:
+- {schedule: every5m, GMT: ' 05: 30', subject: hai you have one message}
