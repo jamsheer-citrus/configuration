@@ -1,0 +1,3 @@
+outBoundStyleId: '1003'
+outBoundStyleAttributes:
+- {schedule: every5m, GMT: ' 05: 30', subject: hai you have one message}
