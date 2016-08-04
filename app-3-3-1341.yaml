@@ -1,0 +1,5 @@
+outBoundStyleId: '1003'
+recipientType: participant
+recipientDetails: {key: participantId, value: '1241'}
+outBoundStyleAttributes:
+- {subject: Welcome you have one message}
