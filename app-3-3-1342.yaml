@@ -1,0 +1,5 @@
+outBoundStyleId: '1001'
+recipientType: participant
+recipientDetails: {key: uniqueId, value: ab}
+outBoundStyleAttributes:
+- {subject: hai you have one message}
