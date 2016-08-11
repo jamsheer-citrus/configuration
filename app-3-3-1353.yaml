@@ -1,0 +1,7 @@
+outBoundStyleId: '1003'
+recipientType: target
+inBoundMail: noyalch@gmail.com
+toMail: citrus.huginn@gmail.com
+recipientDetails: {key: targetId, value: '1352'}
+outBoundStyleAttributes:
+- {schedule: every15m, GMT: ' 05:30', subject: hai you have one message}
