@@ -1,0 +1,5 @@
+outBoundStyleId: '1000'
+recipientType: target
+inBoundMail: j
+toMail: hai
+recipientDetails: {key: targetId, value: '1266'}
