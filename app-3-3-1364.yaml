@@ -1,0 +1,6 @@
+outBoundStyleId: '1003'
+recipientType: target
+inBoundMail: dddddddddddddd
+recipientDetails: {key: targetId, value: '1226'}
+outBoundStyleAttributes:
+- {schedule: every15m, GMT: ' 05:30', subject: hai you have one message}
