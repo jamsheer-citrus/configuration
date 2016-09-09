@@ -1,0 +1,3 @@
+email: haii
+preferenceDetails:
+- {eventTypeId: '1400', outboundStyleId: '1001', deliverMode: stop}
