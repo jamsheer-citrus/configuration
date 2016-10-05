@@ -1,0 +1,826 @@
+package com.netspective.drools.utils
+import java.util.ArrayList; 
+import java.util.List; 
+import java.util.Map; 
+import com.netspective.drools.beans.DataBinding; 
+
+
+rule "SHARING_IN_MEDIA" 
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.general_sharing_social_media" && this contains "execution.session") from $data.values)  
+		itemsPassed : List( this.get(0).get(2) <= 1) from collect(List(this contains "activity_name.general_sharing_social_media" && this contains "execution.session") from $data.values ) 
+	then 
+		dataBinding.addPoint(1); 
+	end
+
+	rule "SHARING_IN_MEDIA_BONUS" 
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List(size > 0) from collect(List(this contains "activity_name.general_sharing_social_media" && this contains "execution.session") from $data.values ) 
+		itemsPassed : List( $a:this.get(0).get(2) >= 2 ) from collect(  List(this contains "activity_name.general_sharing_social_media" && this contains "execution.session") from $data.values)  
+	then 
+		dataBinding.addBonus(((2*1)*9)+((Double.parseDouble($a.toString())-2)*1));  
+	end
+
+rule "NOMINATION_FOR_CURATION" 
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List(size > 0) from collect(List(this contains "activity_name.general_curation_nomination" && this contains "execution.monthly") from $data.values) 
+		itemsPassed : List($a:this.get(0).get(2) <= 1) from collect(List(this contains "activity_name.general_curation_nomination" && this contains "execution.monthly") from $data.values ) 
+	then 
+		dataBinding.addPoint(13); 
+	end
+
+rule "NOMINATION_FOR_CURATION_BONUS" 
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.general_curation_nomination" && this contains "execution.monthly") from $data.values) 
+		itemsPassed : List($a:this.get(0).get(2) > 1) from collect(List(this contains "activity_name.general_curation_nomination" && this contains "execution.monthly") from $data.values )  
+	then 
+		dataBinding.addBonus((((13*2)*23)+(13*(Double.parseDouble($a.toString())-2)))); 
+	end
+
+rule "SAVE_TO_BINDER" 
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.myBInder_saving" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 3) from collect(List(this contains "activity_name.myBInder_saving" && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus(6*Double.parseDouble($a.toString())); 
+	end
+	
+rule "SAVE_TO_BINDER_MONTHLY" 
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.myBInder_saving" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 3) from collect(List(this contains "activity_name.myBInder_saving" && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus((((6*4)*13)+(6*(Double.parseDouble($a.toString())-4)))); 
+	end	
+		
+	
+rule "CLICK_ON_RARE_CONTENT" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareRelated_content_clicking" && this contains "execution.session") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 3) from collect(List(this contains "activity_name.rareRelated_content_clicking" && this contains "execution.session") from $data.values) 
+	then 
+		dataBinding.addBonus(4*Double.parseDouble($a.toString())); 
+	end	
+
+rule "CLICK_ON_RARE_CONTENT_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareRelated_content_clicking" && this contains "execution.session") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 3) from collect(List(this contains "activity_name.rareRelated_content_clicking" && this contains "execution.session") from $data.values) 
+	then 
+		dataBinding.addBonus((((4*4)*9)+(4*(Double.parseDouble($a.toString())-4)))); 
+	end	
+	
+	
+rule "INVITE_COMMUNTIY_MEMEBERS_TO_ENCOURAGEMENT" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.EP_invite_members" && this contains "execution.session") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 3) from collect(List(this contains "activity_name.EP_invite_members" && this contains "execution.session") from $data.values) 
+	then 
+		dataBinding.addBonus(6*Double.parseDouble($a.toString())); 
+	end		
+	
+rule "INVITE_COMMUNTIY_MEMEBERS_TO_ENCOURAGEMENT_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.EP_invite_members" && this contains "execution.session") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 3) from collect(List(this contains "activity_name.EP_invite_members" && this contains "execution.session") from $data.values) 
+	then 
+		dataBinding.addBonus((((6*4)*15)+(6*(Double.parseDouble($a.toString())-4)))); 
+	end	
+	
+rule "INVITE_NON_COMMUNITY_MEMEBERS_TO_ONEVOICE" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.EP_invite_non_members" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 3) from collect(List(this contains "activity_name.EP_invite_non_members" && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus(15*Double.parseDouble($a.toString())); 
+	end	
+
+
+rule "INVITE_NON_COMMUNITY_MEMEBERS_TO_ONEVOICE_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.EP_invite_non_members" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 3) from collect(List(this contains "activity_name.EP_invite_non_members" && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus((((15*4)*3)+(15*(Double.parseDouble($a.toString())-4)))); 
+	end		
+	
+	
+rule "SHARING_TO_CUSTOM_TABS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.myBinder_sharing" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 3) from collect(List(this contains "activity_name.myBinder_sharing" && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus(6*Double.parseDouble($a.toString())); 
+	end		
+		
+rule "SHARING_TO_CUSTOM_TABS_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.myBinder_sharing" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 3) from collect(List(this contains "activity_name.myBinder_sharing" && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus((((6*4)*3)+(6*(Double.parseDouble($a.toString())-4)))); 
+	end		
+	
+rule "UPLOAD_TO_NOGGIN" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.noggin_upload" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 2) from collect(List(this contains "activity_name.noggin_upload" && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus(9*Double.parseDouble($a.toString())); 
+	end			
+	
+rule "UPLOAD_TO_NOGGIN_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.noggin_upload" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 2) from collect(List(this contains "activity_name.noggin_upload" && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus((((9*3)*6)+(9*(Double.parseDouble($a.toString())-3)))); 
+	end
+	
+rule "INFO_ACCEPTED_FOR_CURATION" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.general_accept_curation_nomination" && this contains "execution.total") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 3) from collect(List(this contains "activity_name.general_accept_curation_nomination" && this contains "execution.total") from $data.values) 
+	then 
+		dataBinding.addBonus(56*Double.parseDouble($a.toString())); 
+	end			
+	
+rule "INFO_ACCEPTED_FOR_CURATION_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.general_accept_curation_nomination" && this contains "execution.total") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 3) from collect(List(this contains "activity_name.general_accept_curation_nomination" && this contains "execution.total") from $data.values) 
+	then 
+		dataBinding.addBonus((((56*4)*33)+(56*(Double.parseDouble($a.toString())-4)))); 
+	end				
+
+rule "MAKING_SUGGESTION" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareHome_make_suggestion" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 3) from collect(List(this contains "activity_name.rareHome_make_suggestion" && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus(12*Double.parseDouble($a.toString())); 
+	end	
+
+rule "MAKING_SUGGESTION_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareHome_make_suggestion" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 3) from collect(List(this contains "activity_name.rareHome_make_suggestion" && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus((((12*4)*9)+(12*(Double.parseDouble($a.toString())-4)))); 
+	
+	end	
+	
+rule "PARTICIPATE_IN_ENCOURAGEMENT_PGM" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.EP_opt_in" && this contains "execution.total") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) >= 1) from collect(List(this contains "activity_name.EP_opt_in" && this contains "execution.total") from $data.values) 
+	then 
+		dataBinding.addBonus(69); 
+	end		
+	
+rule "CLICK_IN_RARE_CURATE_INTERNAL" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCurate_internal content_click"  && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 60) from collect(List(this contains "activity_name.rareCurate_internal content_click" && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus(1.5*Double.parseDouble($a.toString())); 
+	end		
+		
+rule "CLICK_IN_RARE_CURATE_INTERNAL_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCurate_internal content_click" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 60) from collect(List(this contains "activity_name.rareCurate_internal content_click"  && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus((((1.5*61)*3)+(1.5*(Double.parseDouble($a.toString())-61)))); 
+	end	
+	
+rule "CLICK_IN_RARE_CURATE_EXTERNAL" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCurate_external_content_click" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 60) from collect(List(this contains "activity_name.rareCurate_external_content_click"  && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus(2.5*Double.parseDouble($a.toString())); 
+	end		
+		
+rule "CLICK_IN_RARE_CURATE_EXTERNAL_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCurate_external_content_click" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 60) from collect(List(this contains "activity_name.rareCurate_external_content_click" && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus((((2.5*61)*3)+(2.5*(Double.parseDouble($a.toString())-61)))); 
+	end			
+	
+rule "PROVIDING_FULL_NAME" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareProfile_FullName" && this contains "execution.total") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) >= 1) from collect(List(this contains "activity_name.rareProfile_FullName" && this contains "execution.total") from $data.values) 
+	then 
+		dataBinding.addBonus(9); 
+	end		
+
+rule "UPLOAD_PROFILE_PHOTO" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareProfile_upload_photo" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 2) from collect(List(this contains "activity_name.rareProfile_upload_photo" && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus(9*Double.parseDouble($a.toString())); 
+	end			
+	
+
+rule "UPLOAD_PROFILE_PHOTO_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareProfile_upload_photo" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 2) from collect(List(this contains "activity_name.rareProfile_upload_photo" && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus((((9*3)*6)+(9*(Double.parseDouble($a.toString())-3)))); 
+	end		
+
+rule "OPEN_RARE_RELETED_PANELS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_rareRelated_opened" && this contains "execution.session") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 3) from collect(List(this contains "activity_name.rareCourage_rareRelated_opened" && this contains "execution.session") from $data.values) 
+	then 
+		dataBinding.addBonus(2*Double.parseDouble($a.toString())); 
+	end	
+	
+rule "OPEN_RARE_RELETED_PANELS_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_rareRelated_opened" && this contains "execution.session") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 3) from collect(List(this contains "activity_name.rareCourage_rareRelated_opened" && this contains "execution.session") from $data.values) 
+	then 
+		dataBinding.addBonus((((2*4)*6)+(2*(Double.parseDouble($a.toString())-4)))); 
+	end		
+	
+rule "RECIEVE_USE_HUGS_THANKS_PRAYERS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_sentimenal_palette_recieved" && this contains "execution.session") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 9) from collect(List(this contains "activity_name.rareCourage_sentimenal_palette_recieved" && this contains "execution.session") from $data.values) 
+	then 
+		dataBinding.addBonus(3*Double.parseDouble($a.toString())); 
+	end	
+
+rule "RECIEVE_USE_HUGS_THANKS_PRAYERS_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_sentimenal_palette_recieved" && this contains "execution.session") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 9) from collect(List(this contains "activity_name.rareCourage_sentimenal_palette_recieved" && this contains "execution.session") from $data.values) 
+	then 
+		dataBinding.addBonus((((3*10)*9)+(3*(Double.parseDouble($a.toString())-10)))); 
+	end	
+
+rule "RECIEVE_CARE" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_caring_recieved" && this contains "execution.session") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 9) from collect(List(this contains "activity_name.rareCourage_caring_recieved" && this contains "execution.session") from $data.values) 
+	then 
+		dataBinding.addBonus(2*Double.parseDouble($a.toString())); 
+	end	
+	
+rule "RECIEVE_CARE_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_caring_recieved" && this contains "execution.session") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 9) from collect(List(this contains "activity_name.rareCourage_caring_recieved" && this contains "execution.session") from $data.values) 
+	then 
+		dataBinding.addBonus((((2*10)*6)+(2*(Double.parseDouble($a.toString())-10)))); 
+	end	
+	
+rule "USING_PALETTE_HUGS_THANKS_PRAYERS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_using_sentimenal_palette" && this contains "execution.session") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 2) from collect(List(this contains "activity_name.rareCourage_using_sentimenal_palette" && this contains "execution.session") from $data.values) 
+	then 
+		dataBinding.addBonus(3*Double.parseDouble($a.toString())); 
+	end		
+	
+rule "USING_PALETTE_HUGS_THANKS_PRAYERS_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_using_sentimenal_palette" && this contains "execution.session") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 2) from collect(List(this contains "activity_name.rareCourage_using_sentimenal_palette" && this contains "execution.session") from $data.values) 
+	then 
+		dataBinding.addBonus((((3*3)*9)+(3*(Double.parseDouble($a.toString())-3)))); 
+	end		
+		
+rule "USING_CARE" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_caring" && this contains "execution.session") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 2) from collect(List(this contains "activity_name.rareCourage_caring" && this contains "execution.session") from $data.values) 
+	then 
+		dataBinding.addBonus(2*Double.parseDouble($a.toString())); 
+	end	
+	
+rule "USING_CARE_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_caring" && this contains "execution.session") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 2) from collect(List(this contains "activity_name.rareCourage_caring" && this contains "execution.session") from $data.values) 
+	then 
+		dataBinding.addBonus((((2*3)*6)+(2*(Double.parseDouble($a.toString())-3)))); 
+	end	
+	
+	
+	
+rule "UPLOAD_MONTAGE_PHOTO" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareProfile_upload_photo_montages" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 2) from collect(List(this contains "activity_name.rareProfile_upload_photo_montages" && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus(9*Double.parseDouble($a.toString())); 
+	end		
+
+rule "UPLOAD_MONTAGE_PHOTO_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareProfile_upload_photo_montages" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 2) from collect(List(this contains "activity_name.rareProfile_upload_photo_montages" && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus((((9*3)*6)+(9*(Double.parseDouble($a.toString())-3)))); 
+	end		
+	
+rule "INSERTING_MOTTO_OR_QUOTES" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareProfile_insert_motto" && this contains "execution.total") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 0) from collect(List(this contains "activity_name.rareProfile_insert_motto" && this contains "execution.total") from $data.values) 
+	then 
+		dataBinding.addBonus(3*Double.parseDouble($a.toString())); 
+	end		
+	
+rule "FULL_COMPLETION_OF_PROFILE" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareProfile_Completed" && this contains "execution.total") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 0) from collect(List(this contains "activity_name.rareProfile_Completed" && this contains "execution.total") from $data.values) 
+	then 
+		dataBinding.addBonus(383); 
+	end		
+
+rule "UP_OR_DOWNVOTE_SUGGESTION" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareHome_suggestion_voting" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 3) from collect(List(this contains "activity_name.rareHome_suggestion_voting" && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus(3*Double.parseDouble($a.toString())); 
+	end	
+	
+rule "UP_OR_DOWNVOTE_SUGGESTION_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareHome_suggestion_voting" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 3) from collect(List(this contains "activity_name.rareHome_suggestion_voting" && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus((((3*4)*6)+(3*(Double.parseDouble($a.toString())-4)))); 
+	end	
+
+rule "COMPLETED_RARE_QUESTIONAIRE" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareProfile_rareQuestionnaire_Completion" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 2) from collect(List(this contains "activity_name.rareProfile_rareQuestionnaire_Completion" && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus(393*Double.parseDouble($a.toString())); 
+	end		
+
+rule "COMPLETED_RARE_QUESTIONAIRE_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareProfile_rareQuestionnaire_Completion" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 2) from collect(List(this contains "activity_name.rareProfile_rareQuestionnaire_Completion" && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus((((393*3)*3)+(393*(Double.parseDouble($a.toString())-3)))); 
+	end		
+
+rule "COMPLETED_RARE_INITIAL_QUESTIONAIRE" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareJourney_initialQuestionnaire_Completion" && this contains "execution.total") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 0) from collect(List(this contains "activity_name.rareJourney_initialQuestionnaire_Completion" && this contains "execution.total") from $data.values) 
+	then 
+		dataBinding.addBonus(538); 
+	end		
+
+rule "ADDING_TIMELINE_EVENT" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareJourney_adding_timeline_event" && this contains "execution.session") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 2) from collect(List(this contains "activity_name.rareJourney_adding_timeline_event" && this contains "execution.session") from $data.values) 
+	then 
+		dataBinding.addBonus(236*Double.parseDouble($a.toString())); 
+	end	
+
+rule "ADDING_TIMELINE_EVENT_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareJourney_adding_timeline_event" && this contains "execution.session") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 2) from collect(List(this contains "activity_name.rareJourney_adding_timeline_event" && this contains "execution.session") from $data.values) 
+	then 
+		dataBinding.addBonus((((236*3)*2)+(236*(Double.parseDouble($a.toString())-3)))); 
+	end	
+	
+rule "BECOMING_PROTOCOL_PARTNER" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareClinical_protocol_partnering" && this contains "execution.total") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 0) from collect(List(this contains "activity_name.rareClinical_protocol_partnering" && this contains "execution.total") from $data.values) 
+	then 
+		dataBinding.addBonus(933); 
+	end		
+	
+rule "BECOMING_MENTOR_FOR_CLIENT_TRIALS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareClinical_mentoring_clinical_trial" && this contains "execution.total") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 0) from collect(List(this contains "activity_name.rareClinical_mentoring_clinical_trial"  && this contains "execution.total") from $data.values) 
+	then 
+		dataBinding.addBonus(1623); 
+	end	
+		
+rule "SELECTED_AS_MENTOR_BY_MEMBER" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareClinical_selecting_mentor_clinical_trial" && this contains "execution.total") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 5) from collect(List(this contains "activity_name.rareClinical_selecting_mentor_clinical_trial" && this contains "execution.total") from $data.values) 
+	then 
+		dataBinding.addBonus(383*Double.parseDouble($a.toString())); 
+	end	
+	
+rule "SELECTED_AS_MENTOR_BY_MEMBER_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareClinical_selecting_mentor_clinical_trial" && this contains "execution.total") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 5) from collect(List(this contains "activity_name.rareClinical_selecting_mentor_clinical_trial" && this contains "execution.total") from $data.values) 
+	then 
+		dataBinding.addBonus((((383*6)*2)+(383*(Double.parseDouble($a.toString())-6)))); 
+	end		
+
+rule "USING_MENTOR_CENTER_TO_FIND_MENTOR" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareClinical_searching_clincal_trial_mentor" && this contains "execution.total") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 3) from collect(List(this contains "activity_name.rareClinical_searching_clincal_trial_mentor" && this contains "execution.total") from $data.values) 
+	then 
+		dataBinding.addBonus(259*Double.parseDouble($a.toString())); 
+	end	
+	
+rule "USING_MENTOR_CENTER_TO_FIND_MENTOR_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareClinical_searching_clincal_trial_mentor" && this contains "execution.total") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 3) from collect(List(this contains "activity_name.rareClinical_searching_clincal_trial_mentor" && this contains "execution.total") from $data.values) 
+	then 
+		dataBinding.addBonus((((259*4)*2)+(259*(Double.parseDouble($a.toString())-4)))); 
+	end		
+	
+	
+rule "CREATE_RARE_TEAM_BEFORE_INVITING" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareTeam_creating_my_rareTeam" && this contains "execution.total") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 0) from collect(List(this contains "activity_name.rareTeam_creating_my_rareTeam" && this contains "execution.total") from $data.values) 
+	then 
+		dataBinding.addBonus(309); 
+	end	
+
+rule "INVITE_USER_TO_RARE_TEAM" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareTeam_inviting_rareMates"  && this contains "execution.total") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 10) from collect(List(this contains "activity_name.rareTeam_inviting_rareMates" && this contains "execution.total") from $data.values) 
+	then 
+		dataBinding.addBonus(613*Double.parseDouble($a.toString())); 
+	end	
+	
+rule "INVITE_USER_TO_RARE_TEAM_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareTeam_inviting_rareMates" && this contains "execution.total") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 10) from collect(List(this contains "activity_name.rareTeam_inviting_rareMates"  && this contains "execution.total") from $data.values) 
+	then 
+		dataBinding.addBonus((((613*11)*2)+(613*(Double.parseDouble($a.toString())-11)))); 
+	end	
+	
+rule "ACCEPT_OTHER_USERS_INVITAION_TO_THEIR_TEAM" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareTeam_accepting_other_invitation" && this contains "execution.total") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 10) from collect(List(this contains "activity_name.rareTeam_accepting_other_invitation"  && this contains "execution.total") from $data.values) 
+	then 
+		dataBinding.addBonus(638*Double.parseDouble($a.toString())); 
+	end		
+		
+rule "ACCEPT_OTHER_USERS_INVITAION_TO_THEIR_TEAM_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareTeam_accepting_other_invitation" && this contains "execution.total") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 10) from collect(List(this contains "activity_name.rareTeam_accepting_other_invitation"  && this contains "execution.total") from $data.values) 
+	then 
+		dataBinding.addBonus((((638*11)*2)+(638*(Double.parseDouble($a.toString())-11)))); 
+	end		
+	
+rule "ACCEPT_OUR_INVITAION_BY_OTHERS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareTeam_accepting_my_invitation" && this contains "execution.total") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 10) from collect(List(this contains "activity_name.rareTeam_accepting_my_invitation" && this contains "execution.total") from $data.values) 
+	then 
+		dataBinding.addBonus(336*Double.parseDouble($a.toString())); 
+	end		
+		
+rule "ACCEPT_OUR_INVITAION_BY_OTHERS_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareTeam_accepting_my_invitation" && this contains "execution.total") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 10) from collect(List(this contains "activity_name.rareTeam_accepting_my_invitation"  && this contains "execution.total") from $data.values) 
+	then 
+		dataBinding.addBonus((((336*11)*2)+(336*(Double.parseDouble($a.toString())-11)))); 
+	end	
+	
+rule "ANSWERING_POLL_QUESTIONS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rarePoll_completed" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 0) from collect(List(this contains "activity_name.rarePoll_completed" && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus(13); 
+	end	
+	
+rule "BUILD_RARE_TRIAL_REPORT" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareClinical_building_rareTrial_report" && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 1) from collect(List(this contains "activity_name.rareClinical_building_rareTrial_report"  && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus(463*Double.parseDouble($a.toString())); 
+	end	
+	
+rule "BUILD_RARE_TRIAL_REPORT_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareClinical_building_rareTrial_report"  && this contains "execution.monthly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 1) from collect(List(this contains "activity_name.rareClinical_building_rareTrial_report"  && this contains "execution.monthly") from $data.values) 
+	then 
+		dataBinding.addBonus((((463*2)*2)+(463*(Double.parseDouble($a.toString())-2)))); 
+	end	
+	
+rule "POST_TEXT_IN_ONEVOICE" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_posting_text"  && this contains "execution.weekly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 2) from collect(List(this contains "activity_name.rareCourage_posting_text" && this contains "execution.weekly") from $data.values) 
+	then 
+		dataBinding.addBonus(3*Double.parseDouble($a.toString())); 
+	end	
+	
+rule "POST_TEXT_IN_ONEVOICE_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_posting_text" && this contains "execution.weekly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 2) from collect(List(this contains "activity_name.rareCourage_posting_text" && this contains "execution.weekly") from $data.values) 
+	then 
+		dataBinding.addBonus((((3*3)*23)+(3*(Double.parseDouble($a.toString())-3)))); 
+	end		
+
+rule "POST_MEDIA_IN_ONEVOICE" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_posting_media_attachment" && this contains "execution.weekly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 1) from collect(List(this contains "activity_name.rareCourage_posting_media_attachment"  && this contains "execution.weekly") from $data.values) 
+	then 
+		dataBinding.addBonus(5*Double.parseDouble($a.toString())); 
+	end	
+	
+rule "POST_MEDIA_IN_ONEVOICE_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_posting_media_attachment" && this contains "execution.weekly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 1) from collect(List(this contains "activity_name.rareCourage_posting_media_attachment" && this contains "execution.weekly") from $data.values) 
+	then 
+		dataBinding.addBonus((((5*2)*33)+(5*(Double.parseDouble($a.toString())-2)))); 
+	end		
+	
+rule "COMMENT_IN_RARE_COURAGE" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_Commenting" && this contains "execution.weekly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 1) from collect(List(this contains "activity_name.rareCourage_Commenting" && this contains "execution.weekly") from $data.values) 
+	then 
+		dataBinding.addBonus(2*Double.parseDouble($a.toString())); 
+	end	
+	
+rule "COMMENT_IN_RARE_COURAGE_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_Commenting" && this contains "execution.weekly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 1) from collect(List(this contains "activity_name.rareCourage_Commenting" && this contains "execution.weekly") from $data.values) 
+	then 
+		dataBinding.addBonus((((2*2)*25)+(2*(Double.parseDouble($a.toString())-2)))); 
+	end	
+	
+rule "DISCUSSING_IN_RARE_COURAGE" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_discussion_navigation" && this contains "execution.weekly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 2) from collect(List(this contains "activity_name.rareCourage_discussion_navigation" && this contains "execution.weekly") from $data.values) 
+	then 
+		dataBinding.addBonus(3*Double.parseDouble($a.toString())); 
+	end		
+	
+rule "DISCUSSING_IN_RARE_COURAGE_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_discussion_navigation" && this contains "execution.weekly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 2) from collect(List(this contains "activity_name.rareCourage_discussion_navigation" && this contains "execution.weekly") from $data.values) 
+	then 
+		dataBinding.addBonus((((3*3)*3)+(3*(Double.parseDouble($a.toString())-3)))); 
+	end	
+		
+rule "USE_SEARCH_AND_FILTER" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.general_advanced_search_or_filter" && this contains "execution.weekly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 4) from collect(List(this contains "activity_name.general_advanced_search_or_filter" && this contains "execution.weekly") from $data.values) 
+	then 
+		dataBinding.addBonus(1*Double.parseDouble($a.toString())); 
+	end		
+	
+rule "USE_SEARCH_AND_FILTER_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.general_advanced_search_or_filter" && this contains "execution.weekly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 4) from collect(List(this contains "activity_name.general_advanced_search_or_filter" && this contains "execution.weekly") from $data.values) 
+	then 
+		dataBinding.addBonus((((1*5)*3)+(1*(Double.parseDouble($a.toString())-5)))); 
+	end
+	
+rule "OMNIBUS_SEARCH" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.general_omnibus_search_and_filter" && this contains "execution.weekly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 4) from collect(List(this contains "activity_name.general_omnibus_search_and_filter" && this contains "execution.weekly") from $data.values) 
+	then 
+		dataBinding.addBonus(1*Double.parseDouble($a.toString())); 
+	end		
+	
+rule "OMNIBUS_SEARCH_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.general_omnibus_search_and_filter" && this contains "execution.weekly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 4) from collect(List(this contains "activity_name.general_omnibus_search_and_filter" && this contains "execution.weekly") from $data.values) 
+	then 
+		dataBinding.addBonus((((1*5)*3)+(1*(Double.parseDouble($a.toString())-5)))); 
+	end	
+	
+rule "LOGGING_USING_EMAIL" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.general_login_using_email" && this contains "execution.weekly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 2) from collect(List(this contains "activity_name.general_login_using_email" && this contains "execution.weekly") from $data.values) 
+	then 
+		dataBinding.addBonus(1*Double.parseDouble($a.toString())); 
+	end	
+	
+rule "LOGGING_USING_EMAIL_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.general_login_using_email" && this contains "execution.weekly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 2) from collect(List(this contains "activity_name.general_login_using_email" && this contains "execution.weekly") from $data.values) 
+	then 
+		dataBinding.addBonus((((1*3)*13)+(1*(Double.parseDouble($a.toString())-3)))); 
+	end
+	
+rule "LOGGING_USING_FACEBOOK" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.general_login_using_social_media" && this contains "execution.weekly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 2) from collect(List(this contains "activity_name.general_login_using_social_media" && this contains "execution.weekly") from $data.values) 
+	then 
+		dataBinding.addBonus(5*Double.parseDouble($a.toString())); 
+	end	
+	
+rule "LOGGING_USING_FACEBOOK_BONUS" 	
+
+	when 
+		dataBinding : DataBinding($data : data) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.general_login_using_social_media"  && this contains "execution.weekly") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 2) from collect(List(this contains "activity_name.general_login_using_social_media" && this contains "execution.weekly") from $data.values) 
+	then 
+		dataBinding.addBonus((((5*3)*23)+(5*(Double.parseDouble($a.toString())-3)))); 
+	end		
+
