@@ -351,63 +351,22 @@ rule "RECIEVE_CARE_BONUS"
 		dataBinding.addBonus((((2*10)*6)+(2*(Double.parseDouble($a.toString())-10)))); 
 	end	
 	
-rule "USING_PALETTE_HUGS" 	
+rule "USING_PALETTE_HUGS_THANKS_PRAYERS" 	
 
 	when 
 		dataBinding : DataBinding($data : data) 
-		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_using_sentimenal_palette_hugs" && this contains "execution.session") from $data.values ) 
-		itemsPassed : List($a:this.get(0).get(2) <= 2) from collect(List(this contains "activity_name.rareCourage_using_sentimenal_palette_hugs" && this contains "execution.session") from $data.values) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_using_sentimenal_palette" && this contains "execution.session") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) <= 2) from collect(List(this contains "activity_name.rareCourage_using_sentimenal_palette" && this contains "execution.session") from $data.values) 
 	then 
 		dataBinding.addBonus(3*Double.parseDouble($a.toString())); 
 	end		
 	
-rule "USING_PALETTE_HUGS_BONUS" 	
+rule "USING_PALETTE_HUGS_THANKS_PRAYERS_BONUS" 	
 
 	when 
 		dataBinding : DataBinding($data : data) 
-		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_using_sentimenal_palette_hugs" && this contains "execution.session") from $data.values ) 
-		itemsPassed : List($a:this.get(0).get(2) > 2) from collect(List(this contains "activity_name.rareCourage_using_sentimenal_palette_hugs" && this contains "execution.session") from $data.values) 
-	then 
-		dataBinding.addBonus((((3*3)*9)+(3*(Double.parseDouble($a.toString())-3)))); 
-	end		
-	
-	
-rule "USING_PALETTE_THANKS" 	
-
-	when 
-		dataBinding : DataBinding($data : data) 
-		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_using_sentimenal_palette_thanks" && this contains "execution.session") from $data.values ) 
-		itemsPassed : List($a:this.get(0).get(2) <= 2) from collect(List(this contains "activity_name.rareCourage_using_sentimenal_palette_thanks" && this contains "execution.session") from $data.values) 
-	then 
-		dataBinding.addBonus(3*Double.parseDouble($a.toString())); 
-	end		
-	
-rule "USING_PALETTE_THANKS_BONUS" 	
-
-	when 
-		dataBinding : DataBinding($data : data) 
-		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_using_sentimenal_palette_thanks" && this contains "execution.session") from $data.values ) 
-		itemsPassed : List($a:this.get(0).get(2) > 2) from collect(List(this contains "activity_name.rareCourage_using_sentimenal_palette_thanks" && this contains "execution.session") from $data.values) 
-	then 
-		dataBinding.addBonus((((3*3)*9)+(3*(Double.parseDouble($a.toString())-3)))); 
-	end		
-	
-rule "USING_PALETTE_PRAYERS" 	
-
-	when 
-		dataBinding : DataBinding($data : data) 
-		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_using_sentimenal_palette_prayer" && this contains "execution.session") from $data.values ) 
-		itemsPassed : List($a:this.get(0).get(2) <= 2) from collect(List(this contains "activity_name.rareCourage_using_sentimenal_palette_prayer" && this contains "execution.session") from $data.values) 
-	then 
-		dataBinding.addBonus(3*Double.parseDouble($a.toString())); 
-	end		
-	
-rule "USING_PALETTE_PRAYERS_BONUS" 	
-
-	when 
-		dataBinding : DataBinding($data : data) 
-		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_using_sentimenal_palette_prayer" && this contains "execution.session") from $data.values ) 
-		itemsPassed : List($a:this.get(0).get(2) > 2) from collect(List(this contains "activity_name.rareCourage_using_sentimenal_palette_prayer" && this contains "execution.session") from $data.values) 
+		check : List( size > 0 ) from collect(List(this contains "activity_name.rareCourage_using_sentimenal_palette" && this contains "execution.session") from $data.values ) 
+		itemsPassed : List($a:this.get(0).get(2) > 2) from collect(List(this contains "activity_name.rareCourage_using_sentimenal_palette" && this contains "execution.session") from $data.values) 
 	then 
 		dataBinding.addBonus((((3*3)*9)+(3*(Double.parseDouble($a.toString())-3)))); 
 	end		
