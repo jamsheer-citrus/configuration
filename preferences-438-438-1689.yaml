@@ -1,5 +1,5 @@
 email: 5196603d-6319-494e-901b-4b10fc616f32
-cellNumber: 905ce665-c37d-4858-8261-848a2fabbb45
+cellNumber: 5196603d-6319-494e-901b-4b10fc616f32
 preferenceDetails:
-- {eventTypeId: '1400', outboundStyleId: '1001', deliverMode: stop}
-- {eventTypeId: '1466', outboundStyleId: '1001', deliverMode: stop}
+- {eventTypeId: '1400', outboundStyleId: '1001', deliverMode: updated stop}
+- {eventTypeId: '1466', outboundStyleId: '1001', deliverMode: updated stop}
