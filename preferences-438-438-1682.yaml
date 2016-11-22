@@ -1,0 +1,5 @@
+email: '1234567898767774342'
+cellNumber: '000000002'
+preferenceDetails:
+- {eventTypeId: '1400', outboundStyleId: '1001', deliverMode: stop}
+- {eventTypeId: '1466', outboundStyleId: '1001', deliverMode: stop}
