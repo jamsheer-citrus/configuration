@@ -1,5 +1,5 @@
-email: 60fc4ca3-a7c5-4b24-ba8b-8570bcac7ee7
-cellNumber: 7c17506f-ec32-4f35-ab32-c4a8a9004755
+email: 60dd92c6-058d-4ec8-b89b-cf02708d7c29
+cellNumber: c6aeec87-426a-41a1-a41f-cc86b0d9bf05
 preferenceDetails:
-- {eventTypeId: '1400', outboundStyleId: '1001', deliverMode: stop}
-- {eventTypeId: '1466', outboundStyleId: '1001', deliverMode: stop}
+- {eventTypeId: '1400', outboundStyleId: '1001', deliverMode: updated stop}
+- {eventTypeId: '1466', outboundStyleId: '1001', deliverMode: updated stop}
