@@ -1,0 +1,5 @@
+email: 71efa531-ff49-4fc3-a901-45b68281b6f4
+cellNumber: 63298eb4-9b5c-4ee8-92ef-5c42817a8c6e
+preferenceDetails:
+- {eventTypeId: '1400', outboundStyleId: '1001', deliverMode: stop}
+- {eventTypeId: '1466', outboundStyleId: '1001', deliverMode: stop}
