@@ -1,5 +1,5 @@
 email: 2a76d144-4a99-442b-b74c-35d85541dfc1
-cellNumber: 29c1db1b-3bf6-43a4-a806-03e69dbb7831
+cellNumber: 2a76d144-4a99-442b-b74c-35d85541dfc1
 preferenceDetails:
-- {eventTypeId: '1400', outboundStyleId: '1001', deliverMode: stop}
-- {eventTypeId: '1466', outboundStyleId: '1001', deliverMode: stop}
+- {eventTypeId: '1400', outboundStyleId: '1001', deliverMode: updated stop}
+- {eventTypeId: '1466', outboundStyleId: '1001', deliverMode: updated stop}
