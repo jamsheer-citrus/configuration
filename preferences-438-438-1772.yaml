@@ -1,5 +1,5 @@
 email: 3d0c7f8e-d892-424d-a4b6-c1d5ef023a8f
-cellNumber: 74b5bdb1-7695-41af-a7e1-8543909bf54d
+cellNumber: 3d0c7f8e-d892-424d-a4b6-c1d5ef023a8f
 preferenceDetails:
-- {eventTypeId: '1400', outboundStyleId: '1001', deliverMode: stop}
-- {eventTypeId: '1466', outboundStyleId: '1001', deliverMode: stop}
+- {eventTypeId: '1400', outboundStyleId: '1001', deliverMode: updated stop}
+- {eventTypeId: '1466', outboundStyleId: '1001', deliverMode: updated stop}
