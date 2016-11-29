@@ -1,5 +1,5 @@
 email: e98dcb41-8e94-42dc-bdaf-d6fc9e3f2bfd
-cellNumber: 050423d1-38b2-4b1c-94cb-1ec17cf4c915
+cellNumber: e98dcb41-8e94-42dc-bdaf-d6fc9e3f2bfd
 preferenceDetails:
-- {eventTypeId: '1400', outboundStyleId: '1001', deliverMode: stop}
-- {eventTypeId: '1466', outboundStyleId: '1001', deliverMode: stop}
+- {eventTypeId: '1400', outboundStyleId: '1001', deliverMode: updated stop}
+- {eventTypeId: '1466', outboundStyleId: '1001', deliverMode: updated stop}
