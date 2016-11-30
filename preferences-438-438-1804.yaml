@@ -1,5 +1,5 @@
 email: 8756cce5-03b0-4145-a650-bb93099ced00
-cellNumber: a85ec7e4-1ffd-4626-843b-cc6ae96e7d1e
+cellNumber: 8756cce5-03b0-4145-a650-bb93099ced00
 preferenceDetails:
-- {eventTypeId: '1400', outboundStyleId: '1001', deliverMode: stop}
-- {eventTypeId: '1466', outboundStyleId: '1001', deliverMode: stop}
+- {eventTypeId: '1400', outboundStyleId: '1001', deliverMode: updated stop}
+- {eventTypeId: '1466', outboundStyleId: '1001', deliverMode: updated stop}
