@@ -1,5 +1,5 @@
 email: 1f1059d7-d495-481d-be4e-6abdfa049f3d
-cellNumber: b4c98fdf-e506-42fd-ad8c-0fddfa136600
+cellNumber: 1f1059d7-d495-481d-be4e-6abdfa049f3d
 preferenceDetails:
-- {eventTypeId: '1400', outboundStyleId: '1001', deliverMode: stop}
-- {eventTypeId: '1466', outboundStyleId: '1001', deliverMode: stop}
+- {eventTypeId: '1400', outboundStyleId: '1001', deliverMode: updated stop}
+- {eventTypeId: '1466', outboundStyleId: '1001', deliverMode: updated stop}
