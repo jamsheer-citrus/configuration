@@ -1,0 +1,5 @@
+email: da077c43-9322-4477-bd58-b7bee45a6c1e
+cellNumber: 964e57ec-76a2-4d33-b635-d41705feb97e
+preferenceDetails:
+- {eventTypeId: '1400', outboundStyleId: '1001', deliverMode: stop}
+- {eventTypeId: '1466', outboundStyleId: '1001', deliverMode: stop}
