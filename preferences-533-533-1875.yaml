@@ -1,5 +1,5 @@
 email: a188a009-27f5-4ee1-9271-3e4d64bc7a7b
-cellNumber: 1b20b77a-3829-459d-a44c-319236cd154b
+cellNumber: a188a009-27f5-4ee1-9271-3e4d64bc7a7b
 preferenceDetails:
-- {eventTypeId: '1400', outboundStyleId: '1001', deliverMode: stop}
-- {eventTypeId: '1466', outboundStyleId: '1001', deliverMode: stop}
+- {eventTypeId: '1400', outboundStyleId: '1001', deliverMode: updated stop}
+- {eventTypeId: '1466', outboundStyleId: '1001', deliverMode: updated stop}
